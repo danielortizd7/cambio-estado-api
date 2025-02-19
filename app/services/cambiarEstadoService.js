@@ -1,4 +1,4 @@
-const Muestra = require("../models/muestraModel");
+const Resultado = require("../models/resultadoModel"); // Modelo correcto
 
 const estadosValidos = [
   "Recibida",
@@ -15,8 +15,8 @@ const cambiarEstadoMuestra = async (cedula, idMuestra, estado) => {
       throw new Error("⚠️ Estado inválido. Los estados permitidos son: " + estadosValidos.join(", "));
     }
 
-    // Buscar la muestra asegurando que idMuestra sea tratado como string
-    const muestra = await Muestra.findOne({ idMuestra: String(idMuestra) });
+    // Buscar la muestra en "Resultado", asegurando que idMuestra sea tratado como string
+    const muestra = await Resultado.findOne({ idMuestra: String(idMuestra) });
 
     if (!muestra) {
       throw new Error("❌ Muestra no encontrada.");
